@@ -1,6 +1,6 @@
 <ul>
     {% for item in items %}
-        <li><a href="?{{ put_url }}&{{ menu_name }}={{ item.id }}">{{ item.name }}</a></li>
+        <li><a href="?{{ other_querystring }}&{{ menu_name }}={{ item.id }}">{{ item.name }}</a></li>
         {% if item.child_items %}
             {% include 'tree_menu.html' with items=item.child_items %}
         {% endif %}
