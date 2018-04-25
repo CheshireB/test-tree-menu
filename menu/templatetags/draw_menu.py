@@ -30,7 +30,6 @@ def draw_menu(context, menu_name):
                 if item['id'] == selected_item_id:
                     selected_item_id_list.append(selected_item_id)
 
-
         for item in root_item:
             if item['id'] in selected_item_id_list:
                 item['child_items'] = get_child_items(item_queryset_values, item['id'], selected_item_id_list)
@@ -43,6 +42,14 @@ def draw_menu(context, menu_name):
         result_dict = {'items':[item for item in Item.objects.filter(menu_id=menu_name, parent_item=None).values()]}
 
     result_dict['menu_name'] = menu_name
+
+    querystring_args = []
+    for key in context['request'].GET:
+        if key != menu_name:
+            querystring_args.append(key+'='+context['request'].GET[key])
+    querystring = ('&').join(querystring_args)
+
+    result_dict['put_url'] = querystring
     return result_dict
 
 
