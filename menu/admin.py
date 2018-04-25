@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Tree, Node
+from .models import Menu, Item
 
 
 class TreeAdmin(admin.ModelAdmin):
@@ -11,6 +11,6 @@ class NodeAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'slug']
 
 
-admin.site.register(Tree, TreeAdmin)
-admin.site.register(Node, NodeAdmin)
+admin.site.register(Menu, TreeAdmin)
+admin.site.register(Item, NodeAdmin)
 
